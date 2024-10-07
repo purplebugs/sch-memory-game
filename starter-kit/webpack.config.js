@@ -29,8 +29,8 @@ module.exports = {
     ],
   },
   devServer: {
-    watchContentBase: true,
-    contentBase: './static',
+    watchFiles: './static',
+    static: './static',
     port,
   },
   watchOptions: {
