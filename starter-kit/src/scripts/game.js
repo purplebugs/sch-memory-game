@@ -5,7 +5,7 @@ export default class Game {
     this.cards = cards?.items;
     this.total = cards?.total;
     this.totalPairs = cards?.totalPairs;
-
+    this.totalMatches = 0;
     this.recentlySelected = [];
     this.populateCards(this.cards);
   }
@@ -21,6 +21,8 @@ export default class Game {
   }
 
   isMatch() {
+    document.getElementById('match').innerText = 'Is it a match?';
+
     if (this.recentlySelected.length < 2) {
       return false;
     }
@@ -29,9 +31,16 @@ export default class Game {
     const isMatch = lastTwo[0]?.name == lastTwo[1]?.name;
     console.log('isMatch', isMatch);
 
-    // TODO If last two cards clicked match:
-    // - Show "YES" on scoreboard
-    // - Show number of matches on scoreboard
+    if (isMatch) {
+      document.getElementById('match').innerText = 'Is it a match? YES';
+
+      this.totalMatches += 1;
+      document.getElementById('totalMatches').innerText = `Total matching pairs: ${this.totalMatches}`;
+    }
+
+    if (isMatch && this.totalMatches == this.totalPairs) {
+      document.getElementById('result').innerText = `Result: YOU WIN!! Reload to play again`;
+    }
 
     return isMatch;
   }

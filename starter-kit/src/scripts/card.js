@@ -28,14 +28,12 @@ export default class Card {
       return;
     }
 
-    console.log('handleclick this.name', this.name);
     this.element.innerText = this.name;
     this.element.style.backgroundImage = `url(${this.url})`;
     this.showing = true;
 
     if (this.game.recentlySelected.length < 3) {
       this.game.recentlySelected.push({ card: this, name: this.name, element: this.element });
-      console.log('handleClick this.game.recentlySelected', this.game.recentlySelected);
     }
 
     if (this.game.isMatch()) {
