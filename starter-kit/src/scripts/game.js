@@ -44,7 +44,4 @@ export default class Game {
 
     return isMatch;
   }
-
-  // TODO If all cards facing up:
-  // - Show on scoreboard "YOU WIN - Refresh page to start again"
 }
