@@ -6,6 +6,7 @@ const app = express();
 app.use(cors());
 
 const port = process.env.SERVER_PORT || 3002;
+const basePath = `http://localhost:${port}`;
 
 // TODO add test for /api/cards
 app.get('/api/cards', (req, res) => {
@@ -18,31 +19,33 @@ app.get('/api/cards', (req, res) => {
   console.log(names);
   const host = 'http://localhost:3002'; // TODO move to global this
   try {
+    // TODO extract to function populateEndpoint and write a test
     res.json({
       total: names.length,
-      cards: [
+      totalPairs: names.length / 2,
+      items: [
         {
-          url: `${host}/png/${names[0]}/200`,
+          url: `${basePath}/png/${names[0]}/200`,
           name: names[0],
         },
         {
-          url: `${host}/png/${names[1]}/200`,
+          url: `${basePath}/png/${names[1]}/200`,
           name: names[1],
         },
         {
-          url: `${host}/png/${names[2]}/200`,
+          url: `${basePath}/png/${names[2]}/200`,
           name: names[2],
         },
         {
-          url: `${host}/png/${names[3]}/200`,
+          url: `${basePath}/png/${names[3]}/200`,
           name: names[3],
         },
         {
-          url: `${host}/png/${names[4]}/200`,
+          url: `${basePath}/png/${names[4]}/200`,
           name: names[4],
         },
         {
-          url: `${host}/png/${names[5]}/200`,
+          url: `${basePath}/png/${names[5]}/200`,
           name: names[5],
         },
       ],
