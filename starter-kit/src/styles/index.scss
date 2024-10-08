@@ -2,3 +2,10 @@ body {
   background-color: #123;
   color: white;
 }
+
+div.card {
+  // background-image: url('http://localhost:3002/png/anita/200');
+  border: 5px solid darkblue;
+  height: 200px;
+  width: 200px;
+}
