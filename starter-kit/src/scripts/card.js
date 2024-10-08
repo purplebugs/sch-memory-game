@@ -1,37 +1,40 @@
-import { default as Game } from './game';
-
 export default class Card {
-  constructor(id, name, url) {
+  constructor(id, name, url, game) {
     this.id = id;
     this.name = name;
     this.url = url;
     this.element;
+    this.game = game;
   }
 
   create() {
     this.element = document.getElementById(this.id);
     console.log('this.element', this.element);
 
-    this.element.addEventListener('click', (event) => {
-      this.handleClick();
-    });
+    this.element.addEventListener('click', this.handleClick);
   }
 
-  handleClick() {
+  handleClick = () => {
     this.element.innerText = this.name;
     this.element.style.backgroundImage = `url(${this.url})`;
+    this.element.removeEventListener('click', this.handleClick);
 
-    if (Game.lastTwo.length == 2) {
-      console.log('lastTwo.length', Game.lastTwo.length);
-      Game.lastTwo.shift();
+    if (this.game.lastTwo.length < 3) {
+      this.game.lastTwo.push({ name: this.name, element: this.element });
     }
 
-    if (Game.lastTwo.length < 2) {
-      Game.lastTwo.push(this.name);
+    if (this.game.isMatch()) {
+      console.log('Game.lastTwo[0].element', this.game.lastTwo[0].element);
+      console.log('Game.lastTwo[1].element', this.game.lastTwo[1].element);
+      this.game.lastTwo = [];
     }
 
-    console.log('lastTwo', Game.lastTwo);
+    if (this.game.lastTwo.length == 3 && !this.game.isMatch()) {
+      console.log('Three');
+      this.game.lastTwo[0].element.style.backgroundImage = `url("")`;
+      this.game.lastTwo[1].element.style.backgroundImage = `url("")`;
 
-    Game.isMatch();
-  }
+      this.game.lastTwo = [];
+    }
+  };
 }

@@ -6,13 +6,8 @@ const fetchData = async () => {
   return data;
 };
 
-const renderData = async (data) => {
-  console.log(data);
-};
-
 const init = async () => {
   const data = await fetchData();
-  renderData(data);
   const game = new Game(data);
   console.log('game', game);
 };
