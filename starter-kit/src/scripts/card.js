@@ -11,18 +11,14 @@ export default class Card {
   static lastIdSelected = null;
 
   create() {
-    // Create card DIV eg <div class="card" id="card_1">?</div>
-    const cardDivElement = document.createElement('div');
+    // Create card DIV eg <div class="card">?</div>
+    this.element = document.createElement('div');
     const newContent = document.createTextNode('?');
-    cardDivElement.appendChild(newContent);
-    cardDivElement.classList.add('card');
-    cardDivElement.setAttribute('id', `${this.id}`);
+    this.element.appendChild(newContent);
+    this.element.classList.add('card');
 
     // Add card DIV to parent
-    this.game.element.appendChild(cardDivElement);
-
-    this.element = cardDivElement;
-    console.log('this.element', this.element);
+    this.game.element.appendChild(this.element);
 
     this.element.addEventListener('click', this.handleClick);
   }
