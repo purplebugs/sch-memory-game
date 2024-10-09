@@ -1,7 +1,7 @@
 import '../styles/index.scss';
 import { fetchData } from './fetchData.js';
 
-import { default as Game } from './game';
+import Game from './game';
 
 const init = async () => {
   const data = await fetchData();

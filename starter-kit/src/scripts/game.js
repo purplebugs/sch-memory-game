@@ -1,4 +1,4 @@
-import { default as Card } from './card';
+import Card from './card';
 
 export default class Game {
   constructor(cards) {
