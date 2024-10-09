@@ -44,7 +44,7 @@ export default class Card {
       this.game.recentlySelected = [];
     }
 
-    if (this.game.recentlySelected.length == 2 && !this.game.isMatch()) {
+    if (this.game.recentlySelected.length === 2 && !this.game.isMatch()) {
       console.log('Two - not a match');
       this.game.sleepingAfterMatch = true;
 
@@ -62,7 +62,7 @@ export default class Card {
 
         this.game.recentlySelected = [];
         this.game.sleepingAfterMatch = false;
-      }, 3000);
+      }, 1500);
     }
   };
 }

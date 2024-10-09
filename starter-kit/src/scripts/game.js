@@ -28,7 +28,7 @@ export default class Game {
       return false;
     }
 
-    const isMatch = this.recentlySelected[0]?.name == this.recentlySelected[1]?.name;
+    const isMatch = this.recentlySelected[0]?.name === this.recentlySelected[1]?.name;
     console.log('isMatch', isMatch);
 
     if (isMatch) {
@@ -38,7 +38,7 @@ export default class Game {
       document.getElementById('totalMatches').innerText = `Total matching pairs: ${this.totalMatches}`;
     }
 
-    if (isMatch && this.totalMatches == this.totalPairs) {
+    if (isMatch && this.totalMatches === this.totalPairs) {
       document.getElementById('result').innerText = `Result: YOU WIN!! Reload to play again`;
     }
 
