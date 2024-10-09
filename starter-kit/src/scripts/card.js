@@ -8,8 +8,6 @@ export default class Card {
     this.showing = false;
   }
 
-  static lastIdSelected = null;
-
   create() {
     // Create card DIV eg <div class="card">?</div>
     this.element = document.createElement('div');
@@ -24,8 +22,7 @@ export default class Card {
   }
 
   handleClick = () => {
-    if (this.id == Card.lastIdSelected) {
-      console.log('Clicked on same element, ignore');
+    if (this.game.sleepingAfterMatch) {
       return;
     }
 
@@ -38,33 +35,34 @@ export default class Card {
     this.element.style.backgroundImage = `url(${this.url})`;
     this.showing = true;
 
-    if (this.game.recentlySelected.length < 3) {
+    if (this.game.recentlySelected.length < 2) {
       this.game.recentlySelected.push({ card: this, name: this.name, element: this.element });
     }
 
     if (this.game.isMatch()) {
+      console.log('isMatch!');
       this.game.recentlySelected = [];
     }
 
-    if (this.game.recentlySelected.length == 3 && !this.game.isMatch()) {
-      console.log('Three');
+    if (this.game.recentlySelected.length == 2 && !this.game.isMatch()) {
+      console.log('Two - not a match');
+      this.game.sleepingAfterMatch = true;
 
-      // Reset
-      this.game.recentlySelected[0].element.style.backgroundImage = `url("")`;
-      this.game.recentlySelected[1].element.style.backgroundImage = `url("")`;
+      // Set timeout before reset
+      setTimeout(() => {
+        // Reset
+        this.game.recentlySelected[0].element.style.backgroundImage = `url("")`;
+        this.game.recentlySelected[1].element.style.backgroundImage = `url("")`;
 
-      this.game.recentlySelected[0].card.showing = false;
-      this.game.recentlySelected[1].card.showing = false;
+        this.game.recentlySelected[0].card.showing = false;
+        this.game.recentlySelected[1].card.showing = false;
 
-      this.game.recentlySelected[0].element.innerText = '?';
-      this.game.recentlySelected[1].element.innerText = '?';
+        this.game.recentlySelected[0].element.innerText = '?';
+        this.game.recentlySelected[1].element.innerText = '?';
 
-      // Remove first two items
-      this.game.recentlySelected.shift();
-      this.game.recentlySelected.shift();
-      console.log('Three this.game.recentlySelected', this.game.recentlySelected);
+        this.game.recentlySelected = [];
+        this.game.sleepingAfterMatch = false;
+      }, 3000);
     }
-
-    Card.lastIdSelected = this.id;
   };
 }

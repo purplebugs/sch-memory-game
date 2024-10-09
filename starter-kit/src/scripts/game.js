@@ -7,6 +7,7 @@ export default class Game {
     this.totalPairs = cards?.totalPairs;
     this.totalMatches = 0;
     this.recentlySelected = [];
+    this.sleepingAfterMatch = false;
 
     this.element = document.getElementById('game');
     this.populateCards(this.cards);
@@ -27,8 +28,7 @@ export default class Game {
       return false;
     }
 
-    const lastTwo = this.recentlySelected.slice(-2);
-    const isMatch = lastTwo[0]?.name == lastTwo[1]?.name;
+    const isMatch = this.recentlySelected[0]?.name == this.recentlySelected[1]?.name;
     console.log('isMatch', isMatch);
 
     if (isMatch) {
