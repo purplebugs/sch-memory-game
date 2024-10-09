@@ -17,4 +17,5 @@ Navigate to [starter-kit](starter-kit/) and see the [README](starter-kit/README.
 1. Fetched game data from a server API
 1. Implemented a basic scoreboard using plain HTML and JavaScript
 1. Basic unit test using Node.js test runner. Run with: `npm test`
+1. Basic error handling
 1. Basic CSS
