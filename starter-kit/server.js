@@ -13,7 +13,7 @@ globalThis.basePath = `http://localhost:${port}`;
 app.get('/api/cards', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
 
-  const uniqueNames = ['anita', 'benny', 'cecilie'];
+  const uniqueNames = ['anita', 'benny', 'cecilie', 'deedee'];
   const doubleNames = uniqueNames.concat(uniqueNames);
   const names = doubleNames; //.sort((a, b) => 0.5 - Math.random()); // TODO randomise names
 

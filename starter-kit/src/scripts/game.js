@@ -7,6 +7,8 @@ export default class Game {
     this.totalPairs = cards?.totalPairs;
     this.totalMatches = 0;
     this.recentlySelected = [];
+
+    this.element = document.getElementById('game');
     this.populateCards(this.cards);
   }
 
