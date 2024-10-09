@@ -18,9 +18,3 @@ Navigate to [starter-kit](starter-kit/) and see the [README](starter-kit/README.
 1. Implemented a basic scoreboard using plain HTML and JavaScript
 1. Basic unit test using Node.js test runner. Run with: `npm test`
 1. Basic CSS
-
-## To do
-
-1. Logic bugfixes in the game - use timing after two non matching cards are selected to block the game until some seconds pass then flip the cards back
-1. Refactoring and cleanup
-1. CSS to make it more pretty and some fancy animations
