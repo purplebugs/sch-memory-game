@@ -15,9 +15,9 @@ app.get('/api/cards', (req, res) => {
 
   const uniqueNames = ['anita', 'benny', 'cecilie', 'deedee'];
   const doubleNames = uniqueNames.concat(uniqueNames);
-  const names = doubleNames; //.sort((a, b) => 0.5 - Math.random()); // TODO randomise names
+  const names = doubleNames.sort((a, b) => 0.5 - Math.random()); // TODO randomise names
+  console.log('names', names);
 
-  console.log(names);
   try {
     res.json(populateEndpoint(names));
   } catch (error) {
