@@ -18,12 +18,7 @@ app.get('/api/cards', (req, res) => {
   const names = doubleNames.sort((a, b) => 0.5 - Math.random()); // TODO randomise names
   console.log('names', names);
 
-  try {
-    res.json(populateEndpoint(names));
-  } catch (error) {
-    console.error(error);
-    return new Error('🧨 API: Could not get cards');
-  }
+  res.json(populateEndpoint(names));
 });
 
 // Example: 'GET /svg/billy/300' will return a 300x300 svg for the identifier 'billy'
