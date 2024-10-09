@@ -11,8 +11,6 @@ export default class Game {
   }
 
   populateCards() {
-    // TODO add test for populateCards()
-
     console.log('this.cards', this.cards);
     this.cards.forEach((card, i) => {
       const item = new Card(`card_${i}`, card.name, card.url, this);

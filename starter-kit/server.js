@@ -10,10 +10,9 @@ app.use(cors());
 const port = process.env.SERVER_PORT || 3002;
 globalThis.basePath = `http://localhost:${port}`;
 
-// TODO add test for /api/cards
 app.get('/api/cards', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  // TODO names should come from a random list
+
   const uniqueNames = ['anita', 'benny', 'cecilie'];
   const doubleNames = uniqueNames.concat(uniqueNames);
   const names = doubleNames; //.sort((a, b) => 0.5 - Math.random()); // TODO randomise names
