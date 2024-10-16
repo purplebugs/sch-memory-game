@@ -10,6 +10,12 @@ To implement a techincal challenge based on these [instructions](instructions.md
 
 Navigate to [starter-kit](starter-kit/) and see the [README](starter-kit/README.md)
 
+## Run the app  
+
+`npm run start:all`
+
+This starts the app and the server to produce images for the cards as per [starter-kit/README.md](starter-kit/README.md)
+
 ## Things I did
 
 1. Updated depencies and configuration so the `npm install` and `npm start` commands would work because dependencies were years out of date
