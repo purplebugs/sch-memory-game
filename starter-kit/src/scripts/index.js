@@ -14,4 +14,7 @@ const init = async () => {
   }
 };
 
-init();
+window.addEventListener('load', (event) => {
+  init();
+  console.log('page is fully loaded');
+});
